@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <mat-card>
+      <mat-card-title>LogIn</mat-card-title>
+      <mat-card-content>
+        <form #login="ngForm" (ngSubmit)="onLogIn(login)">
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput ngModel name="email">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput ngModel name="password">
+            </mat-form-field>
+            <div class="example-button-row">
+              <button mat-raised-button color="primary">LogIn</button>
+            </div>
+            </div>
+          </form>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</body>
+</html>
