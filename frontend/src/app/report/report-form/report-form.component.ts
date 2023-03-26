@@ -9,6 +9,7 @@ import { ReportService } from '../report.service';
 export class ReportFormComponent {
 @ViewChild('report') report: NgForm
 isFormSubmitted: boolean = false
+isAuthenticate: boolean = true
  states = ['Andhra Pradesh',
   'Arunachal Pradesh',
   'Assam',
@@ -47,7 +48,18 @@ isFormSubmitted: boolean = false
       reportData.block,
       reportData.FPO,
       reportData.shareHolders,
-      reportData.percentageWomenFarmers).subscribe(resData=>console.log(resData))
-      this.isFormSubmitted=true
+      reportData.percentageWomenFarmers).subscribe({
+        next: response=>{
+          console.log(response)
+          this.isFormSubmitted=true
+          this.isAuthenticate=true
+        },
+        error: err=>{
+          this.isAuthenticate=false
+          console.log(err.message)
+        }
+      }
+      )
+
   }
 }

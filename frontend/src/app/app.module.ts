@@ -22,7 +22,7 @@ import { ReportFormComponent } from './report/report-form/report-form.component'
 import { ReportComponent } from './report/report/report.component';
 
 const appRoute: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+{path: '', component: LoginComponent},
 {path: 'login', component: LoginComponent},
 {path: 'signup', component: SignupComponent},
 {path: 'report-form', component: ReportFormComponent},

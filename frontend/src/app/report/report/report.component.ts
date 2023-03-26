@@ -28,16 +28,24 @@ export class ReportComponent implements OnInit {
   displayedColumns: string[]=['s.no.','state','district','subDistrict','block','fpo','shareHolders','womenFarmers']
    //reportData: Report[{}]=[{}]
     reportData :{}[]=[{}]
+    isAuthenticate = false
 dataSource = new MatTableDataSource(this.reportData)
 constructor(private reportServ: ReportService){}
 ngOnInit(): void {
     this.onShowReport();
 }
 onShowReport(){
-this.reportServ.showReport().subscribe(resData=>{
-console.log(resData)
-this.dataSource.data = resData
-})
+this.reportServ.showReport().subscribe({
+next: resData=>{
+  this.dataSource.data = resData
+  this.isAuthenticate=true
+},
+error: err=>{
+  this.isAuthenticate = false
+  console.log(err.message)
+}
+}
+)
 }
 applyFilter(event: Event){
 const filteredValue = (event.target as HTMLInputElement).value

@@ -37,3 +37,12 @@ display: flex;
 justify-content: space-between;
 }
 
+.errorMessage{
+  margin: auto;
+  margin-top:50px;
+  background-color: pink;
+  height: 130px;
+  width: 200px;
+  text-align:center;
+
+}

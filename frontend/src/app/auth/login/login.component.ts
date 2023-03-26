@@ -12,6 +12,7 @@ import { LoginResponse } from '../loginResponse.interface'
 export class LoginComponent {
   @ViewChild('login') login: NgForm;
   isValidCredentials: boolean = true
+  isLoggedIn: boolean = false
   constructor(private authServ: AuthService) {}
   onLogIn(login: NgForm) {
     const loginDetail = login.value;
@@ -20,8 +21,13 @@ export class LoginComponent {
       .subscribe({
         next:(resData: LoginResponse)=>{
           console.log(resData.data.token)
-          localStorage.setItem('authorization',resData.data.token)
+          const tokenObj={
+            token: resData.data.token,
+            expiresIn: Date.now()+(60*1000)
+          }
+          localStorage.setItem('Authorization',JSON.stringify(tokenObj))
           this.isValidCredentials=true
+          this.isLoggedIn = true
         },
         error:err=> {
           this.isValidCredentials=false

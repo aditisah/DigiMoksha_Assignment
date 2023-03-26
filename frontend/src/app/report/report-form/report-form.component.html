@@ -7,7 +7,10 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="container">
+  <div *ngIf="!isAuthenticate">
+    <p>Login first</p>
+  </div>
+  <div class="container" *ngIf="isAuthenticate">
     <mat-card *ngIf="!isFormSubmitted">
       <mat-card-title>Report Form</mat-card-title>
       <mat-card-content>

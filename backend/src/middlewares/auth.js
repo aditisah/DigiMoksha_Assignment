@@ -1,11 +1,18 @@
 const jwt = require("jsonwebtoken")
 const auth = (req, res, next)=>{
     try{
-        const token = req.headers["x-api-key"]
+        let token;
+        const tokenStr = req.headers["authorization"||"Authorization"]
+        if(tokenStr==='null'||tokenStr==='undefined'){
+             token=JSON.parse(tokenStr)
+        }else{
+            token = tokenStr
+        }
+        
     if(!token){
         return res.status(401).send({status: false, message: 'Please login'})
     }
-    const decodedToken = jwt.verify("SECRET-KEY",token)
+    const decodedToken = jwt.verify(token,"SECRET-KEY")
      req.loggedInuserId = decodedToken.userId
     next()
     }catch(err){
