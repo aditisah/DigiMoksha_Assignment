@@ -8,24 +8,27 @@
 </head>
 <body>
   <div class="container">
-    <mat-card>
-      <mat-card-title>LogIn</mat-card-title>
+    <div *ngIf="isLoggedIn">
+      <p style="background-color: pink;height: 50px;width: 230px;">You are successfully loggedin!!</p>
+    </div>
+    <mat-card *ngIf="!isLoggedIn">
+      <mat-card-title>Login</mat-card-title>
       <div *ngIf="!isValidCredentials">
-        <span style="background-color: pink;color:firebrick;height: 400px;">Please enter valid credentials!!</span>
+        <span style="background-color: pink;color:firebrick;height: 400px;">Please enter valid credentials OR signup first!!</span>
       </div>
       <mat-card-content>
         <form #login="ngForm" (ngSubmit)="onLogIn(login)">
           <div>
             <mat-form-field appearance="fill">
               <mat-label>Email</mat-label>
-              <input matInput ngModel name="email">
+              <input type="email" matInput ngModel name="email">
             </mat-form-field>
             <mat-form-field appearance="fill">
               <mat-label>Password</mat-label>
-              <input matInput ngModel name="password">
+              <input type="password" matInput ngModel name="password">
             </mat-form-field>
             <div class="example-button-row">
-              <button mat-raised-button color="primary">LogIn</button>
+              <button mat-raised-button color="primary">Login</button>
             </div>
             </div>
           </form>

@@ -1,62 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <div *ngIf="!isAuthenticate">
-    <p>Login first</p>
-  </div>
-  <div class="container" *ngIf="isAuthenticate">
-    <mat-card *ngIf="!isFormSubmitted">
-      <mat-card-title>Report Form</mat-card-title>
-      <mat-card-content>
-        <form #report="ngForm" (ngSubmit)="onSubmitReport(report)">
-          <div>
-            <mat-form-field appearance="fill">
-              <mat-label>State</mat-label>
-              <mat-select ngModel name="state">
-                <mat-option *ngFor="let state of states" [value]="state">
-                  {{state}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>District</mat-label>
-              <input matInput ngModel name="district">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Sub District</mat-label>
-              <input matInput ngModel name="subDistrict">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Block</mat-label>
-              <input matInput ngModel name="block">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>FPO</mat-label>
-              <input matInput ngModel name="FPO">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Shareholders</mat-label>
-              <input matInput ngModel name="shareHolders">
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-              <mat-label>Women Farmers(%)</mat-label>
-              <input matInput ngModel name="percentageWomenFarmers">
-            </mat-form-field>
-            <div class="example-button-row">
-              <button mat-raised-button color="primary">Submit</button>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="errorMessage" *ngIf="!isAuthenticate">
+      <p>Login is required!!!<span style="font-weight: bold;cursor: pointer;" routerLink="/login">Click here</span></p>
+    </div>
+    <div class="container" *ngIf="isAuthenticate">
+      <!-- <div *ngIf="isFieldEmpty">
+        <p>Please fill required fields!!</p>
+      </div> -->
+      <div *ngIf="errorFlag && !isFormSubmitted" style="height:20px;width:240px;background-color: rgb(248, 194, 194);">
+        <p>{{errorMessage}}</p>
+      </div>
+      <div
+        *ngIf="isFormSubmitted"
+        style="margin: auto; height: 60px; width: 380px"
+      >
+        <h3 style="background-color: rgb(208, 206, 206)">
+          You have successfully submitted the FPO detail!!!
+        </h3>
+      </div>
+      <mat-card *ngIf="!isFormSubmitted">
+        <mat-card-title>Report Form</mat-card-title>
+        <mat-card-content>
+          <form #report="ngForm" (ngSubmit)="onSubmitReport(report)">
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>State</mat-label>
+                <mat-select ngModel name="state">
+                  <mat-option *ngFor="let state of states" [value]="state">
+                    {{ state }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>District</mat-label>
+                <input matInput ngModel name="district" />
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Sub District</mat-label>
+                <input matInput ngModel name="subDistrict" />
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Block</mat-label>
+                <input matInput ngModel name="block" />
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>FPO</mat-label>
+                <input matInput ngModel name="FPO" />
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Shareholders</mat-label>
+                <input matInput ngModel name="shareHolders" />
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Women Farmers(%)</mat-label>
+                <input matInput ngModel name="percentageWomenFarmers" />
+              </mat-form-field>
+              <div class="example-button-row">
+                <button mat-raised-button color="primary">Submit</button>
+              </div>
             </div>
           </form>
-
-      </mat-card-content>
-    </mat-card>
-    <div *ngIf="isFormSubmitted" style="margin:auto;height: 60px;width: 380px;"><h3 style="background-color: rgb(208, 206, 206);">You have successfully submitted the FPO detail!!!</h3></div>
-  </div>
-</body>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </body>
 </html>

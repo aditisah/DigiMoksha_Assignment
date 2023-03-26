@@ -1,6 +1,7 @@
 <div class="errorMessage" *ngIf="!isAuthenticate">
-  <p>Login is required!!!</p>
+  <p>Login is required!!!<span style="font-weight: bold;cursor: pointer;" routerLink="/login">Click here</span></p>
 </div>
+
 <div *ngIf="isAuthenticate">
   <div class="search-row">
     <mat-form-field>

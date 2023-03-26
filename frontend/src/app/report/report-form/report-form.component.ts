@@ -10,6 +10,10 @@ export class ReportFormComponent {
 @ViewChild('report') report: NgForm
 isFormSubmitted: boolean = false
 isAuthenticate: boolean = true
+isFieldEmpty: boolean = false
+errorFlag: boolean=false
+errorMessage: string=''
+
  states = ['Andhra Pradesh',
   'Arunachal Pradesh',
   'Assam',
@@ -55,8 +59,16 @@ isAuthenticate: boolean = true
           this.isAuthenticate=true
         },
         error: err=>{
-          this.isAuthenticate=false
-          console.log(err.message)
+          if(err.status===401){
+            this.isAuthenticate=false
+          }else{
+            this.isFormSubmitted=false
+            //this.isFieldEmpty=true
+            this.errorFlag=true
+            this.errorMessage=err.error.message
+          }
+
+          console.log(err.error.message)
         }
       }
       )

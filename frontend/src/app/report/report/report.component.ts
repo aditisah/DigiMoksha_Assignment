@@ -42,7 +42,7 @@ next: resData=>{
 },
 error: err=>{
   this.isAuthenticate = false
-  console.log(err.message)
+  console.log(err.error.message)
 }
 }
 )

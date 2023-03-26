@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class SignupComponent {
   @ViewChild('signup') signup: NgForm
+  isSignedUp: boolean=false
   constructor(private authServ: AuthService) {}
   onSignUp(signUp: NgForm) {
     const adminDetail = signUp.value;
@@ -18,6 +19,9 @@ export class SignupComponent {
       adminDetail.mobileNo,
       adminDetail.password,
       adminDetail.confirmPassword
-    ).subscribe(responseData=>console.log(responseData))
+    ).subscribe(responseData=>{
+      console.log(responseData)
+      this.isSignedUp=true
+    })
   }
 }

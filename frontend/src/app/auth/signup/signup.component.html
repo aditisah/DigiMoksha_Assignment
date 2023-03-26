@@ -8,7 +8,10 @@
 </head>
 <body>
 <div class="container">
-  <mat-card>
+  <div *ngIf="isSignedUp">
+    <p>Signup successful.Click here to <span style="cursor: pointer;font-weight: bold;color: rgb(6, 112, 6);" routerLink="/login">Login</span></p>
+  </div>
+  <mat-card *ngIf="!isSignedUp">
     <mat-card-title>Signup</mat-card-title>
     <mat-card-content>
       <form #signup="ngForm" (ngSubmit)="onSignUp(signup)">
@@ -21,7 +24,7 @@
           <mat-form-field appearance="fill">
 
             <mat-label>Email</mat-label>
-            <input matInput ngModel name="email">
+            <input type="email" matInput ngModel name="email">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Mobile No</mat-label>
@@ -29,7 +32,7 @@
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
-            <input matInput ngModel name="password">
+            <input type="password" matInput ngModel name="password">
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Confirm Password</mat-label>
