@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 
+interface LoginResponse {
+  data: {
+    userId: number;
+    token: string;
+  };
+  message: string;
+  status: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +33,6 @@ URL = "http://localhost:3000/admin"
       email: email,
       password: password
     }
-    return this.http.post(`${this.URL}/login`, loginObj)
+    return this.http.post<LoginResponse>(`${this.URL}/login`, loginObj)
   }
 }

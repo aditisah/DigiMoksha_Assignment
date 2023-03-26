@@ -1,0 +1,54 @@
+<div class="search-row">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="search" #input>
+  </mat-form-field>
+  <div class="button-row">
+    <button mat-raised-button color="accent" (click)="downloadReport()">Download excel</button>
+  </div>
+</div>
+<div>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="s.no.">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element; let i='index+1';"> {{i}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="state">
+      <mat-header-cell *matHeaderCellDef> State </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="district">
+      <mat-header-cell *matHeaderCellDef> District </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.district}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="subDistrict">
+      <mat-header-cell *matHeaderCellDef> Sub District </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.subDistrict}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="block">
+      <mat-header-cell *matHeaderCellDef> Block </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.block}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="fpo">
+      <mat-header-cell *matHeaderCellDef> FPO </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.FPO}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="shareHolders">
+      <mat-header-cell *matHeaderCellDef> Share Holders </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.shareHolders}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="womenFarmers">
+      <mat-header-cell *matHeaderCellDef>Women Farmer(%) </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.percentageWomenFarmers}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  </div>

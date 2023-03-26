@@ -13,12 +13,13 @@ const signUp = async (req, res)=>{
 const logIn = async (req, res)=>{
     try{
         const {email, password} = req.body
-        const user = await userModel.findOne({email})
+        const user = await userModel.findOne({email,password})
         if(!user){
             return res.status(400).send({status: false,message: "please give correct credentials!!"})
         }
-        const token = jwt.sign({id: user._id},'SECRET-KEY')
-        res.setHeader("Authorization", token)
+        const token = jwt.sign({userId: user._id},'SECRET-KEY')
+        res.setHeader("x-api-key", token)
+        //nbhh.hb,nxlocalStorage.setItem('token',token)
         res.status(200).send({status: true, message: 'You are successfully loggedin!!', data: {userId:user._id,token}})
     }catch(err){
         res.status(500).send({status: false, message: err.message})

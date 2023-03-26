@@ -16,7 +16,7 @@ const getReport = async (req, res)=>{
         if(reportData.length==0){
             return res.status(404).send({status: false, message: "No report found!"})
         }
-        return res.status(200).send({status: true, data: reportData})
+        return res.status(200).json(reportData)
     }catch(err){
         return res.status(500).send({status: false, message: err.message})
     }

@@ -10,6 +10,9 @@
   <div class="container">
     <mat-card>
       <mat-card-title>LogIn</mat-card-title>
+      <div *ngIf="!isValidCredentials">
+        <span style="background-color: pink;color:firebrick;height: 400px;">Please enter valid credentials!!</span>
+      </div>
       <mat-card-content>
         <form #login="ngForm" (ngSubmit)="onLogIn(login)">
           <div>
@@ -26,7 +29,7 @@
             </div>
             </div>
           </form>
-
+          <p>Don't have an account?<span routerLink="/signup" style="cursor: pointer;"><b>signup</b></span></p>
       </mat-card-content>
     </mat-card>
   </div>

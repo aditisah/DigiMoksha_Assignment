@@ -1,0 +1,33 @@
+<div class="alternative">
+  <mat-toolbar color="primary">
+      <mat-toolbar-row>
+          <!-- <a mat-button routerLink="/">
+          <img src = "assets/logo.png" alt="logo">
+          </a> -->
+          <span class="example-spacer"></span>
+          <span style="font-family: Arial, Helvetica, sans-serif;">FPO</span>
+          <span class="example-spacer"></span>
+     </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+<div>
+<mat-toolbar style="background-color: #00695C; height: 5vh;">
+    <button mat-button class="companyName" routerLink="/">
+      <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    </button>
+
+      <button mat-button [matMenuTriggerFor]="admin">Admin</button>
+      <mat-menu #admin="matMenu">
+          <button mat-menu-item routerLink="/report-form">Report Form</button>
+          <button mat-menu-item routerLink="/report">Report</button>
+          <!-- <button mat-menu-item routerLink="/student-detail-analytics">Dashboard</button> -->
+        </mat-menu>
+
+    <span class="example-spacer"></span>
+      <button mat-button routerLink="/login">Login<i class="material-icons">
+          login
+      </i></button>
+      <button mat-button routerLink="/logout">Logout</button>
+
+  </mat-toolbar>
+</div>
