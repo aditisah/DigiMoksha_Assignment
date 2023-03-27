@@ -23,7 +23,7 @@ export class LoginComponent {
           console.log(resData.data.token)
           const tokenObj={
             token: resData.data.token,
-            expiresIn: Date.now()+(60*1000)
+            expiresIn: Date.now()+(5*60*1000)
           }
           localStorage.setItem('Authorization',JSON.stringify(tokenObj))
           this.isValidCredentials=true
